@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int list1[] = {1, 3, 5, 7, 9};
+    int size1 = sizeof(list1) / sizeof(list1[0]);
+
+    int list2[] = {2, 4, 6, 8, 10};
+    int size2 = sizeof(list2) / sizeof(list2[0]);
+
+    int mergedList[size1 + size2];
+    int mergedSize = size1 + size2;
+    int i, j, k;
+    i = j = k = 0;
+
+    while (i < size1 && j < size2) {
+        if (list1[i] < list2[j]) {
+            mergedList[k++] = list1[i++];
+        } else {
+            mergedList[k++] = list2[j++];
+        }
+    }
+
+    while (i < size1) {
+        mergedList[k++] = list1[i++];
+    }
+
+    while (j < size2) {
+        mergedList[k++] = list2[j++];
+    }
+    printf("Merged List: ");
+    for (int m = 0; m < mergedSize; m++) {
+        printf("%d ", mergedList[m]);
+    }
+
+    return 0;
+}
