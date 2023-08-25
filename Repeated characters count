@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+void printFrequentCounts(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        int count = 1;  
+        if (arr[i] == -1) {
+            continue; 
+        }
+        for (int j = i + 1; j < size; j++) {
+            if (arr[j] == arr[i]) {
+                count++;
+                arr[j] = -1; 
+            }
+        }
+        if (count > 1) {
+            printf("Number %d occurs %d times\n", arr[i], count);
+        }
+    }
+}
+
+int main() {
+    int arr[] = {4, 2, 4, 5, 2, 3, 1, 4, 5, 2, 4};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    printf("Frequently repeated numbers:\n");
+    printFrequentCounts(arr, size);
+
+    return 0;
+}
